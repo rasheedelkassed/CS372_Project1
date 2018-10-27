@@ -13,14 +13,5 @@
 
 
 int main() {
-    int s;
-    struct addrinfo hints, *res;
-
-
-    memset(&hints, 0, sizeof hints);
-    hints.ai_family = AF_UNSPEC;
-    hints.ai_socktype = SOCK_STREAM;
-    hints.ai_flags = AI_PASSIVE;
-
-    getaddrinfo("127.0.0.1", "3490", &hints, &res);
+    std::cout << "HelloWorld\n";
 }
