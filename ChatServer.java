@@ -69,8 +69,12 @@ public class ChatServer{
             }
         }
 		
-		close(clientSocket);
-		close(serverSocket);
+		try {
+            clientSocket.close();
+            dataIn.close();
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
 
 
     }
