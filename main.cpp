@@ -34,8 +34,8 @@ int main() {
 	sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 	// connect!
 	connect(sockfd, res->ai_addr, res->ai_addrlen);
-	while((numbytes = recv(int sockfd, void *buf, int len, int flags)) <= 0){
-		send(int sockfd, const void *msg, int len, int flags);
+	while((numbytes = recv(sockfd, *buf, len, 0)) <= 0){
+		send(sockfd, *msg, int len, 0);
 	}
 	close(sockfd);
 }
