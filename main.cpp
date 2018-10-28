@@ -2,10 +2,13 @@
 #include <sys/types.h>
 #include <iostream>
 #include <sys/socket.h>
-#include <sys/socket.h>
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <errno.h>
 
 #define PORT "5423"
 
@@ -28,8 +31,8 @@ int main() {
 	sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 	// connect!
 	connect(sockfd, res->ai_addr, res->ai_addrlen);
-	while(int recv(int sockfd, void *buf, int len, int flags) <= 0){
-		int send(int sockfd, const void *msg, int len, int flags);
+	while(recv(int sockfd, void *buf, int len, int flags) <= 0){
+		send(int sockfd, const void *msg, int len, int flags);
 	}
 	close(sockfd);
 }
