@@ -18,7 +18,6 @@
 int main() {
     struct addrinfo hints, *res;
 	int sockfd;
-	char buf[MAXDATASIZE];
 	
 	char *msg = "This might work";
 	int len = strlen(msg);
@@ -32,8 +31,8 @@ int main() {
 	sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 	// connect!
 	connect(sockfd, res->ai_addr, res->ai_addrlen);
-	while(recv(sockfd, *buf, len) <= 0){
-		send(sockfd, *msg, len);
+	while(int recv(int sockfd, void *buf, int len, int flags) <= 0){
+		int send(int sockfd, const void *msg, int len, int flags);
 	}
 	close(sockfd);
 }
