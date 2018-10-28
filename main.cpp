@@ -22,6 +22,8 @@ int main() {
 	getaddrinfo("flip3.engr.oregonstate.edu", "5000", &hints, &res);
 	// make a socket:
 	sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+	// bind
+	bind(sockfd, res->ai-addr, res->ai_addrlen)
 	// connect!
 	connect(sockfd, res->ai_addr, res->ai_addrlen);
 
