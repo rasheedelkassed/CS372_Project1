@@ -77,6 +77,6 @@ public class ChatServer{
     }
 
     public static void main(String args[]){
-        ChatServer server = new ChatServer(5000);
+        ChatServer server = new ChatServer(5423);
     }
 }
