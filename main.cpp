@@ -35,7 +35,9 @@ int main() {
 	// connect!
 	connect(sockfd, res->ai_addr, res->ai_addrlen);
 	while((numbytes = recv(sockfd, *buf, len, 0)) <= 0){
-		send(sockfd, *msg, int len, 0);
+		send(sockfd, *msg, len, 0);
 	}
+	buf[numbytes] = '\0';
 	close(sockfd);
+	return 0;
 }
