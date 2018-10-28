@@ -28,8 +28,8 @@ int main() {
 	sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 	// connect!
 	connect(sockfd, res->ai_addr, res->ai_addrlen);
-	
-	int recv(int sockfd, void *buf, int len, int flags);
-
-	int send(int sockfd, const void *msg, int len, int flags);
+	while(int recv(int sockfd, void *buf, int len, int flags) <= 0){
+		int send(int sockfd, const void *msg, int len, int flags);
+	}
+	close(sockfd);
 }

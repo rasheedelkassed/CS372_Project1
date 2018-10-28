@@ -68,6 +68,9 @@ public class ChatServer{
                 System.out.println(e.getMessage());
             }
         }
+		
+		close(clientSocket);
+		close(serverSocket);
 
 
     }
