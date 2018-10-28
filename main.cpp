@@ -26,11 +26,10 @@ int main() {
 	getaddrinfo("flip2.engr.oregonstate.edu", "5423", &hints, &res);
 	// make a socket:
 	sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
-	// bind
-	bind(sockfd, res->ai_addr, res->ai_addrlen);
 	// connect!
 	connect(sockfd, res->ai_addr, res->ai_addrlen);
 	
-	int send(int sockfd, const void *msg, int len, int flags);
+	int recv(int sockfd, void *buf, int len, int flags);
 
+	int send(int sockfd, const void *msg, int len, int flags);
 }
