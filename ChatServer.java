@@ -1,14 +1,15 @@
 // A Java program for a Server
 import java.net.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class ChatServer{
 
     private Socket clientSocket;
     private ServerSocket serverSocket;
 
+    private Scanner messageToSend;
     private BufferedReader dataIn;          //Data being received from the client
-    private BufferedReader commandLineIn;   //Data being received from the command line
     private PrintWriter dataOut;            //Data to be sent to the client
 
 
@@ -32,54 +33,50 @@ public class ChatServer{
         }
     }
 
-    private void getClientData(){
+    private void initializeVariables(){
         try{
             this.dataIn = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void getCommandLineData(){
-        this.commandLineIn = new BufferedReader(new InputStreamReader(System.in));
-    }
-
-    private void sendDataToClient(){
-        try{
             this.dataOut = new PrintWriter(clientSocket.getOutputStream(), true);
-            dataOut.println(commandLineIn.readLine());
+            this.messageToSend = new Scanner(System.in);
+
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
     }
 
 
-    private String testReceivedData = "";
+    private String receivedData = "";
     public ChatServer(int port) {
         startServer(port);
         waitForResponse();
-        getClientData();
-
-        while(testReceivedData != "\\quit"){
+        initializeVariables();
+        while(true){
             try{
-                testReceivedData = dataIn.readLine();
-                System.out.println(testReceivedData);
+                receivedData = dataIn.readLine();
+                if((receivedData) == "\\quit"){
+                    dataOut.close();
+                    dataIn.close();
+                    clientSocket.close();
+                    break;
+                }
+                System.out.println(receivedData);
+
+
             }catch (IOException e){
                 System.out.println(e.getMessage());
             }
         }
-		
-		try {
+
+        try {
             clientSocket.close();
             dataIn.close();
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
 
-
     }
 
     public static void main(String args[]){
-        ChatServer server = new ChatServer(5423);
+        ChatServer server = new ChatServer(5000);
     }
 }
