@@ -7,7 +7,7 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 
-#define PORT "5000"
+#define PORT "5423"
 
 #define MAXDATASIZE 500
 
@@ -23,7 +23,7 @@ int main() {
 	memset(&hints, 0, sizeof hints);
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
-	getaddrinfo("flip2.engr.oregonstate.edu", "5000", &hints, &res);
+	getaddrinfo("flip2.engr.oregonstate.edu", "5423", &hints, &res);
 	// make a socket:
 	sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 	// bind
