@@ -20,7 +20,7 @@ int main() {
 	int sockfd;
 	int numbytes;
 	char buf[MAXDATASIZE];
-	int rv
+	int rv;
 	
 	char *msg = "This might work";
 	int len = strlen(msg);
