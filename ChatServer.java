@@ -81,6 +81,7 @@ public class ChatServer{
 					System.out.println(receivedData);
 				}
 				sentData = messageToSend.nextLine();
+				System.out.println("TEST: " + sentData);
 				if(sentData == "\\quit"){
 					dataOut.close();
                     dataIn.close();
