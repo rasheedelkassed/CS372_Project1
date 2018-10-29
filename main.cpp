@@ -78,9 +78,8 @@ int main() {
 	while(i < 5){
 		fgets(input, 500, stdin);
 		strcat(toSend, userName);
-		toSend[strcspn(toSend, "\n")] = 0;
+		toSend[strcspn(toSend, "\n")] = ">";
 		strcat(toSend, input);
-		printf("TEST%s", toSend);
 		
 		send(sockfd, toSend, sizeof(toSend), 0);
 		
