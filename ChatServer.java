@@ -78,7 +78,7 @@ public class ChatServer{
 					System.out.println(receivedData);
 				}
 				sentData = messageToSend.nextLine();
-				if(sentData == "\\quit\n"){
+				if(sentData.equals("\\quit")){
 					System.out.println("Quitting...");
 					dataOut.close();
                     dataIn.close();
