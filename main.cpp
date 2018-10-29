@@ -62,7 +62,7 @@ int main() {
 		
 		fgets(input, 500, stdin);
 		
-		send(sockfd, input, sizeOf(input), 0);
+		send(sockfd, input, sizeof(input), 0);
 		
 		status = recv(sockfd, output, 500, 0);		
 		
