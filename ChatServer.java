@@ -57,7 +57,7 @@ public class ChatServer{
 			System.out.println("We've made it here!");
             try{
                 receivedData = dataIn.readLine();
-                if(receivedData == "\\quit" || receivedData == null || receivedData == "null"){
+                if(receivedData == "\\quit" || receivedData == null){
                     dataOut.close();
                     dataIn.close();
                     clientSocket.close();
