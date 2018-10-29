@@ -48,19 +48,40 @@ void connectSocket(int sockfd, struct addrinfo *res){
 }
 
 int main() {
-	printf("We Started\n");
 	struct addrinfo *res = createAddressInfo("flip2.engr.oregonstate.edu", "5423");
 	int sockfd = createSocket(res);
 	connectSocket(sockfd, res);
-	printf("We Reached While\n");
+	printf("Server Connected\n");
+	
+	int status;
+	char output[500];
+	
 	int i = 0;
-	while(i < 1){
-		printf("First\n");
+	while(i < 5){
 		send(sockfd, "This might work\n", 16, 0);
-		printf("Second\n");
+		
+		status = recv(sockfd, output, 500, 0);
+		if (strcmp(input, "\\quit\n") == 0){
+			break;
+		}
+		
+		
+		if (status == -1){
+			fprintf(stderr, "Error when receiving data from host\n");
+			exit(1);
+		}
+		else if (status == 0){ // the server closed the connection
+			printf("Connection closed by server\n");
+			break;
+		}
+		else{ // the message was ok, print it
+			printf("%s> %s\n", servername, output);
+		}
+		
+		
+		printf("Loop%i", i);
 		i++;
 	}
-	sleep(100);
 	close(sockfd);
 	freeaddrinfo(res);
 	
