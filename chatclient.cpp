@@ -1,3 +1,16 @@
+/**
+* Author: Rasheed El Kassed
+* Last Modified: 10/27/2018
+* OSU email address: elkasser@oregonstate.edu
+* Course number/section: CS372_400
+* Project Number 1                
+* Due Date: 10/28/2018
+* Description: The client side of a chat program that can connect to one server and begin
+* the sole client. It is able to send 500 characters and will stop when "\quit" is typed
+*
+* Heavily influenced by Beej's Guide to Network Programming. It's essentially a modularized
+* version of an example.
+*/
 #include <string.h>
 #include <sys/types.h>
 #include <iostream>
@@ -14,7 +27,9 @@
 
 #define MAXDATASIZE 500
 
-
+/**
+* Returns a linked list with an address and a port
+*/
 struct addrinfo* createAddressInfo(char *input_addr, char *port){
 	struct addrinfo hints;
 	struct addrinfo *res;
@@ -31,6 +46,9 @@ struct addrinfo* createAddressInfo(char *input_addr, char *port){
 	return res;
 }
 
+/**
+* Creats a socket using and address and port paired within a linked list
+*/
 int createSocket(struct addrinfo *res){
 	int sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 	if (sockfd == -1){
@@ -39,6 +57,9 @@ int createSocket(struct addrinfo *res){
 	return sockfd;
 }
 
+/**
+* Connects the socket using 
+*/
 void connectSocket(int sockfd, struct addrinfo *res){
 	int status;
 	status = connect(sockfd, res->ai_addr, res->ai_addrlen);
@@ -47,10 +68,18 @@ void connectSocket(int sockfd, struct addrinfo *res){
 	}
 }
 
+/**
+* Returns a username found on the command line. 
+*/
 void getUserName(char *name){
 	fgets(name, 10, stdin);
 }
 
+/**
+* Takes two arguments: an adress and a port in the form of strings.
+* Most of the chat functionality comes from here as I wasn't sure how
+* to modularize it. 
+*/
 int main(int argCount, char *address[]) {
 	struct addrinfo *res = createAddressInfo(address[1], address[2]);
 	int sockfd = createSocket(res);
@@ -58,10 +87,10 @@ int main(int argCount, char *address[]) {
 	printf("Server Connected\n");
 	
 	int status;
-	char output[505];
-	char input[505];
+	char output[500];
+	char input[500];
 	char userName[10];
-	char toSend[520];
+	char toSend[510];
 	
 	memset(input,0,sizeof(input));
 	memset(output,0,sizeof(output));
@@ -73,7 +102,7 @@ int main(int argCount, char *address[]) {
 	getUserName(userName);
 	
 	while(true){
-		fgets(input, 505, stdin);
+		fgets(input, 500, stdin);
 		
 		if(strcmp(input, "\\quit\n") == 0){
 			break;
@@ -86,7 +115,7 @@ int main(int argCount, char *address[]) {
 		
 		send(sockfd, toSend, sizeof(toSend), 0);
 		
-		status = recv(sockfd, output, 505, 0);		
+		status = recv(sockfd, output, 500, 0);		
 		if (status == -1){
 			fprintf(stderr, "Error when receiving data from host\n");
 			exit(1);
