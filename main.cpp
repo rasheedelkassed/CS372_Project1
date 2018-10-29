@@ -61,10 +61,12 @@ int main() {
 	char output[500];
 	char input[500];
 	char userName[10];
+	char toSend[510];
 	
 	memset(input,0,sizeof(input));
 	memset(output,0,sizeof(output));
 	memset(userName,0,sizeof(userName));
+	memset(toSend,0,sizeof(toSend));
 	
 	printf("Enter your username: ");
 	getUserName(userName);
@@ -76,8 +78,9 @@ int main() {
 		
 		fgets(input, 500, stdin);
 		
-		send(sockfd, userName + input, sizeof(input), 0);
+		strncat(userName, input sizeof(input));
 		
+		send(sockfd, input, sizeof(input), 0);
 		status = recv(sockfd, output, 500, 0);		
 		
 		if (status == -1){
@@ -95,6 +98,7 @@ int main() {
 		
 		memset(input,0,sizeof(input));
 		memset(output,0,sizeof(output));
+		memset(toSend,0,sizeof(toSend));
 		i++;
 	}
 	close(sockfd);
