@@ -80,6 +80,8 @@ int main() {
 		
 		strncpy(toSend, userName, sizeof(userName));
 		strncat(toSend, input, sizeof(input));
+		printf("EXAMPLE");
+		printf(toSend);
 		
 		send(sockfd, toSend, sizeof(toSend), 0);
 		status = recv(sockfd, output, 500, 0);		
