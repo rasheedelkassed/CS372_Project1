@@ -82,7 +82,7 @@ public class ChatServer{
 				}
 				sentData = messageToSend.nextLine();
 				System.out.println("TEST: " + sentData);
-				if(sentData == "\quit"){
+				if(sentData == "\\quit\n"){
 					dataOut.close();
                     dataIn.close();
                     clientSocket.close();
