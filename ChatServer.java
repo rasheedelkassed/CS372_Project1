@@ -66,7 +66,7 @@ public class ChatServer{
         while(true){
             try{
                 receivedData = dataIn.readLine();
-                if(receivedData == null){
+                if(receivedData == null || receivedData == "\\quit"){
 					System.out.println("Client disconnected");
 					dataOut.close();
                     dataIn.close();
