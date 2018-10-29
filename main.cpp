@@ -47,8 +47,8 @@ void connectSocket(int sockfd, struct addrinfo *res){
 	}
 }
 
-void getUserName(char[] userName){
-	fgets(userName, 10, stdin);
+void getUserName(char *name){
+	fgets(name, 10, stdin);
 }
 
 int main() {
