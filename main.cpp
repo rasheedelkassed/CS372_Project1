@@ -58,10 +58,10 @@ int main(int argCount, char *address[]) {
 	printf("Server Connected\n");
 	
 	int status;
-	char output[500];
-	char input[500];
+	char output[505];
+	char input[505];
 	char userName[10];
-	char toSend[510];
+	char toSend[520];
 	
 	memset(input,0,sizeof(input));
 	memset(output,0,sizeof(output));
@@ -73,7 +73,7 @@ int main(int argCount, char *address[]) {
 	getUserName(userName);
 	
 	while(true){
-		fgets(input, 500, stdin);
+		fgets(input, 505, stdin);
 		
 		if(strcmp(input, "\\quit\n") == 0){
 			break;

@@ -1,4 +1,3 @@
-// A Java program for a Server
 import java.net.*;
 import java.io.*;
 import java.util.Scanner;
@@ -61,8 +60,8 @@ public class ChatServer{
         initializeVariables();
 		getUserName();
 		
-		String receivedData = "";
-		String sentData = "";
+		String receivedData;
+		String sentData;
         while(true){
 		receivedData = "";
 		sentData = "";
