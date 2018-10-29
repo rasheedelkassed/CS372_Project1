@@ -67,6 +67,7 @@ int main() {
 	memset(output,0,sizeof(output));
 	memset(userName,0,sizeof(userName));
 	memset(toSend,0,sizeof(toSend));
+	toSend[0] = '\0';
 	
 	printf("Enter your username: ");
 	getUserName(userName);
@@ -76,7 +77,7 @@ int main() {
 	int i = 0;
 	while(i < 5){
 		fgets(input, 500, stdin);
-		strcpy(toSend, userName);
+		strcat(toSend, userName);
 		strcat(toSend, input);
 		
 		send(sockfd, toSend, sizeof(toSend), 0);
@@ -98,6 +99,7 @@ int main() {
 		memset(input,0,sizeof(input));
 		memset(output,0,sizeof(output));
 		memset(toSend,0,sizeof(toSend));
+		toSend[0] = '\0';
 		i++;
 	}
 	close(sockfd);
