@@ -41,7 +41,7 @@ int createSocket(struct addrinfo *res){
 
 void connectSocket(int sockfd, struct addrinfo *res){
 	int status;
-	status = connect(sockfd, res->ai_addr, res->aiaddrlen);
+	status = connect(sockfd, res->ai_addr, res->ai_addrlen);
 	if(status == -1){
 		exit(1);
 	}
