@@ -106,6 +106,10 @@ public class ChatServer{
     }
 
     public static void main(String args[]){
-        ChatServer server = new ChatServer(5423);
+		try{
+			ChatServer server = new ChatServer(Integer.parseInt(args[0]));
+		}catch (NumberFormatException e){
+			System.out.println(e.getMessage());
+		}
     }
 }
