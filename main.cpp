@@ -86,7 +86,7 @@ int main(int argCount, char *address[]) {
 		
 		send(sockfd, toSend, sizeof(toSend), 0);
 		
-		status = recv(sockfd, output, 500, 0);		
+		status = recv(sockfd, output, 505, 0);		
 		if (status == -1){
 			fprintf(stderr, "Error when receiving data from host\n");
 			exit(1);
