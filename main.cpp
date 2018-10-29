@@ -54,13 +54,12 @@ int main() {
 	connectSocket(sockfd, res);
 	printf("We Reached While\n");
 	int i = 0;
-	while(i < 10){
+	while(i < 1){
 		printf("First\n");
 		send(sockfd, "This might work\n", 1, 0);
 		printf("Second\n");
 		i++;
 	}
-	close(sockfd);
 	
 	freeaddrinfo(res);
 	return 0;
