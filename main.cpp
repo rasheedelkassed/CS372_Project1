@@ -60,11 +60,7 @@ int main() {
 	while(i < 5){
 		send(sockfd, "This might work\n", 16, 0);
 		
-		status = recv(sockfd, output, 500, 0);
-		if (strcmp(input, "\\quit\n") == 0){
-			break;
-		}
-		
+		status = recv(sockfd, output, 500, 0);		
 		
 		if (status == -1){
 			fprintf(stderr, "Error when receiving data from host\n");
