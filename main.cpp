@@ -79,14 +79,13 @@ int main() {
 		fgets(input, 500, stdin);
 		
 		strncpy(toSend, userName, sizeof(userName));
-		strncat(toSend, input, sizeof(input)-1);
+		strncat(toSend, input, sizeof(input)-2);
 		printf("EXAMPLE: ");
 		printf(toSend);
-		printf("ENDEXAMPLE");
 		
 		send(sockfd, toSend, sizeof(toSend), 0);
-		status = recv(sockfd, output, 500, 0);		
 		
+		status = recv(sockfd, output, 500, 0);		
 		if (status == -1){
 			fprintf(stderr, "Error when receiving data from host\n");
 			exit(1);
