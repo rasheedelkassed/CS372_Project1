@@ -78,7 +78,7 @@ int main() {
 			break;
 		}
 		else{
-			printf("%s\n", output);
+			printf("%s", output);
 		}
 		
 		
