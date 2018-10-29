@@ -79,6 +79,7 @@ int main() {
 		fgets(input, 500, stdin);
 		strcat(toSend, userName);
 		strcat(toSend, input);
+		printf("TEST%s", toSend);
 		
 		send(sockfd, toSend, sizeof(toSend), 0);
 		
