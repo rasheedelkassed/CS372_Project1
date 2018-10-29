@@ -53,7 +53,7 @@ int main() {
 	int sockfd = createSocket(res);
 	connectSocket(sockfd, res);
 	
-	send(sockfd, "This might work", sizeof("This might work"), 0);
+	send(sockfd, "This might work", 1, 0);
 	close(sockfd);
 	
 	freeaddrinfo(res);
