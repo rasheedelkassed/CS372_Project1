@@ -47,23 +47,35 @@ public class ChatServer{
         }
     }
 
-
-    private String receivedData = "";
+	
     public ChatServer(int port) {
         startServer(port);
         waitForResponse();
         initializeVariables();
+		
+		String receivedData = "";
+		String sentData = "";
         while(true){
 			System.out.println("We've made it here!");
             try{
                 receivedData = dataIn.readLine();
-                if(receivedData == "\\quit" || receivedData == null){
+                if(receivedData == "\\quit"){
                     dataOut.close();
                     dataIn.close();
                     clientSocket.close();
                     break;
-                }
-                System.out.println(receivedData);
+                }else if(receivedData == null){
+					System.out.println("Client disconnected");
+					dataOut.close();
+                    dataIn.close();
+                    clientSocket.close();
+                    break;
+				}else{
+					System.out.println(receivedData);
+				}
+				
+				sentData = messageToSend.nextLine();
+				dataOut.println(sentData);
 
 
             }catch (IOException e){
