@@ -1,9 +1,19 @@
-#include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 #include <sys/types.h>
+#include <iostream>
 #include <sys/socket.h>
 #include <netdb.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <errno.h>
+
+#define PORT "5423"
+
+#define MAXDATASIZE 500
+
 
 /*******************************************************************************
  * void getusername(char*)
