@@ -51,8 +51,8 @@ void getUserName(char *name){
 	fgets(name, 10, stdin);
 }
 
-int main() {
-	struct addrinfo *res = createAddressInfo("flip2.engr.oregonstate.edu", "5423");
+int main(char *IP[], char *port[]) {
+	struct addrinfo *res = createAddressInfo(IP, port);
 	int sockfd = createSocket(res);
 	connectSocket(sockfd, res);
 	printf("Server Connected\n");
