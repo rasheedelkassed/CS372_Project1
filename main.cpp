@@ -81,7 +81,7 @@ int main() {
 		strncpy(toSend, userName, sizeof(userName));
 		strncat(toSend, input, sizeof(input));
 		
-		send(sockfd, toSend, sizeof(input), 0);
+		send(sockfd, toSend, sizeof(toSend), 0);
 		status = recv(sockfd, output, 500, 0);		
 		
 		if (status == -1){
