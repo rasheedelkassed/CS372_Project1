@@ -22,11 +22,11 @@ import java.util.Scanner;
 
 
 /**
-* ChatServer takes a port and waits for a connection attempt to that port.
+* chatserve takes a port and waits for a connection attempt to that port.
 * To run on port 5000 for example, type the following and then press enter:
 * java chatserve 5000
 */
-public class ChatServer{
+public class chatserve{
 
     private Socket clientSocket;			
     private ServerSocket serverSocket;
@@ -98,7 +98,7 @@ public class ChatServer{
 	* the chat server.
 	* Changes all values;
 	*/	
-    public ChatServer(int port) {
+    public chatserve(int port) {
         startServer(port);
         waitForResponse();
         initializeVariables();
@@ -151,12 +151,12 @@ public class ChatServer{
     }
 	
 	/**
-	* The main function only attempts to make a ChatServer object
+	* The main function only attempts to make a chatserve object
 	* will fail if the incorrect number of args is used.
 	*/
     public static void main(String args[]){
 		try{
-			ChatServer server = new ChatServer(Integer.parseInt(args[0]));
+			chatserve server = new chatserve(Integer.parseInt(args[0]));
 		}catch (NumberFormatException e){
 			System.out.println(e.getMessage());
 		}
