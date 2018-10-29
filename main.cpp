@@ -78,9 +78,10 @@ int main() {
 		
 		fgets(input, 500, stdin);
 		
-		strncat(userName, input, sizeof(input));
+		strncpy(toSend, userName, sizeof(userName));
+		strncat(toSend, input, sizeof(input));
 		
-		send(sockfd, input, sizeof(input), 0);
+		send(sockfd, toSend, sizeof(input), 0);
 		status = recv(sockfd, output, 500, 0);		
 		
 		if (status == -1){
