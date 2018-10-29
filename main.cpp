@@ -31,7 +31,7 @@ struct addrinfo* createAddressInfo(char *input_addr, char *port){
 	return res;
 }
 
-int createSocket(sturct addrinfo *res){
+int createSocket(struct addrinfo *res){
 	int sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 	if (sockfd == -1){
 		exit(1);
