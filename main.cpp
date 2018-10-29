@@ -72,14 +72,17 @@ int main() {
 	printf("Enter your username: ");
 	getUserName(userName);
 	
-	
-	
-	int i = 0;
-	while(i < 5){
+	while(true){
 		fgets(input, 500, stdin);
+		
+		if(strcmp(input, "\\quit\n") == 0){
+			break;
+		}
+		
 		strcat(toSend, userName);
-		toSend[strcspn(toSend, "\n")] = '>';
+		toSend[strcspn(toSend, "\n")] = '>';  //strcspn is a godsend!
 		strcat(toSend, input);
+		
 		
 		send(sockfd, toSend, sizeof(toSend), 0);
 		
@@ -101,7 +104,6 @@ int main() {
 		memset(output,0,sizeof(output));
 		memset(toSend,0,sizeof(toSend));
 		toSend[0] = '\0';
-		i++;
 	}
 	close(sockfd);
 	freeaddrinfo(res);
