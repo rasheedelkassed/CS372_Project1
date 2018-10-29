@@ -57,6 +57,9 @@ int main() {
 	char output[500];
 	char input[500];
 	
+	memset(input,0,sizeof(input));
+	memset(output,0,sizeof(output));
+	
 	int i = 0;
 	while(i < 5){
 		
