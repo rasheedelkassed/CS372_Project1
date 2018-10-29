@@ -80,7 +80,6 @@ int main() {
 		strcat(toSend, userName);
 		toSend[strcspn(toSend, "\n")] = 0;
 		strcat(toSend, input);
-		toSend[strcspn(toSend, "\n")] = 0;
 		printf("TEST%s", toSend);
 		
 		send(sockfd, toSend, sizeof(toSend), 0);
