@@ -64,9 +64,11 @@ public class ChatServer{
 		String receivedData = "";
 		String sentData = "";
         while(true){
+		receivedData = "";
+		sentData = "";
             try{
                 receivedData = dataIn.readLine();
-                if(receivedData == null || receivedData == "\\quit"){
+                if(receivedData == null){
 					System.out.println("Client disconnected");
 					dataOut.close();
                     dataIn.close();
@@ -76,7 +78,14 @@ public class ChatServer{
 					System.out.println(receivedData);
 				}
 				sentData = messageToSend.nextLine();
-				sentData = userName + ">" + sentData + "\n";
+				if(sentData == "\\quit"){
+					System.out.println("Quitting...");
+					dataOut.close();
+                    dataIn.close();
+                    clientSocket.close();
+                    break;
+				}
+				sentData = userName + ">" + sentData;
 				dataOut.println(sentData);
 
 
