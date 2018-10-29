@@ -52,6 +52,7 @@ int main() {
 	struct addrinfo *res = createAddressInfo("flip2.engr.oregonstate.edu", "5423");
 	int sockfd = createSocket(res);
 	connectSocket(sockfd, res);
+	printf("We Reached While");
 	while(true){
 		send(sockfd, "This might work", 1, 0);
 	}
