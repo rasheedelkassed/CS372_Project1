@@ -52,11 +52,6 @@ void getUserName(char *name){
 }
 
 int main(int argCount, char *address[]) {
-	if(argc != 3){
-		fprintf(stderr, "Not enough arguments\n");
-		exit(1);
-	}
-	
 	struct addrinfo *res = createAddressInfo(address[1], address[2]);
 	int sockfd = createSocket(res);
 	connectSocket(sockfd, res);
