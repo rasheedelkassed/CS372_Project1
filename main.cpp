@@ -51,8 +51,13 @@ void getUserName(char *name){
 	fgets(name, 10, stdin);
 }
 
-int main(int IP, char *port[]) {
-	struct addrinfo *res = createAddressInfo(IP, port);
+int main(int argCount, char *address[]) {
+	if(argc != 3){
+		fprintf(stderr, "Not enough arguments\n");
+		exit(1);
+	}
+	
+	struct addrinfo *res = createAddressInfo(address[1], address[2]);
 	int sockfd = createSocket(res);
 	connectSocket(sockfd, res);
 	printf("Server Connected\n");
