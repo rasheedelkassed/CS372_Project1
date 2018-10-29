@@ -52,8 +52,9 @@ int main() {
 	struct addrinfo *res = createAddressInfo("flip2.engr.oregonstate.edu", "5423");
 	int sockfd = createSocket(res);
 	connectSocket(sockfd, res);
-	
-	send(sockfd, "This might work", 1, 0);
+	while(true){
+		send(sockfd, "This might work", 1, 0);
+	}
 	close(sockfd);
 	
 	freeaddrinfo(res);
