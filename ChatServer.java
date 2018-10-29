@@ -19,6 +19,7 @@ public class ChatServer{
             System.out.println("Server started");
         }catch (IOException e){
             System.out.println(e.getMessage());
+            return;
         }
     }
 
@@ -30,6 +31,7 @@ public class ChatServer{
             System.out.println("Client connected");
         }catch (IOException e){
             System.out.println(e.getMessage());
+            return;
         }
     }
 
@@ -41,6 +43,7 @@ public class ChatServer{
 
         }catch (IOException e){
             System.out.println(e.getMessage());
+            return;
         }
     }
 
@@ -64,6 +67,7 @@ public class ChatServer{
 
             }catch (IOException e){
                 System.out.println(e.getMessage());
+                return;
             }
         }
 
@@ -72,6 +76,7 @@ public class ChatServer{
             dataIn.close();
         }catch (IOException e){
             System.out.println(e.getMessage());
+            return;
         }
 
     }

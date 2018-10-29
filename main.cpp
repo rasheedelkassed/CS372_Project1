@@ -15,29 +15,40 @@
 #define MAXDATASIZE 500
 
 
-int main() {
-    struct addrinfo hints, *res;
-	int sockfd;
-	int numbytes;
-	char buf[MAXDATASIZE];
-	int rv;
+struct addrinfo* createAddressInfo(char *input_addr, char *port){
+	struct addrinfo hints;
+	struct addrinfo *res;
 	
-	char *msg = "This might work";
-	int len = strlen(msg);
-
-	// first, load up address structs with getaddrinfo():
 	memset(&hints, 0, sizeof hints);
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
-	getaddrinfo("flip2.engr.oregonstate.edu", "5423", &hints, &res);
-	// make a socket:
-	sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
-	// connect!
-	connect(sockfd, res->ai_addr, res->ai_addrlen);
-	while((numbytes = recv(sockfd, buf, len, 0)) <= 0){
-		send(sockfd, "This might work", len, 0);
+	
+	int status = getaddrinfo(input_addr, port, &hints, &res);
+	if(status != 0){
+		exit(1);
 	}
-	buf[numbytes] = '\0';
+	
+	return res;
+}
+
+int createSocket(sturct addrinfo *res){
+	int sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+	if (sockfd == -1){
+		exit(1);
+	}
+	return sockfd;
+}
+
+void connectSocket(int sockfd, struct addrinfo *res){
+	int status;
+	status = connect(sockfd, res->ai_addr, res->aiaddrlen);
+	if(status == -1){
+		exit(1);
+	}
+}
+
+int main() {
+	send(sockfd, "This might work", len, 0);
 	close(sockfd);
 	return 0;
 }
