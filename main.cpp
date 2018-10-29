@@ -55,10 +55,14 @@ int main() {
 	
 	int status;
 	char output[500];
+	char input[500];
 	
 	int i = 0;
 	while(i < 5){
-		send(sockfd, "This might work\n", 16, 0);
+		
+		fgets(input, 500, stdin);
+		
+		send(sockfd, input, sizeOf(input), 0);
 		
 		status = recv(sockfd, output, 500, 0);		
 		
@@ -66,16 +70,17 @@ int main() {
 			fprintf(stderr, "Error when receiving data from host\n");
 			exit(1);
 		}
-		else if (status == 0){ // the server closed the connection
+		else if (status == 0){ 
 			printf("Connection closed by server\n");
 			break;
 		}
-		else{ // the message was ok, print it
+		else{
 			printf("%s\n", output);
 		}
 		
 		
-		printf("Loop%i", i);
+		memset(input,0,sizeof(input));
+		memset(output,0,sizeof(output));
 		i++;
 	}
 	close(sockfd);
