@@ -76,10 +76,10 @@ int main() {
 	int i = 0;
 	while(i < 5){
 		
-		printf("%s>" userName);
+		printf("%s>", userName);
 		fgets(input, 500, stdin);
 		
-		send(sockfd, toSend.c_str(), sizeof(toSend), 0);
+		send(sockfd, toSend, sizeof(toSend), 0);
 		
 		status = recv(sockfd, output, 500, 0);		
 		if (status == -1){
