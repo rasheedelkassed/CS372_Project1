@@ -51,7 +51,7 @@ void getUserName(char *name){
 	fgets(name, 10, stdin);
 }
 
-int main(char *IP[], char *port[]) {
+int main(char *IP, char *port) {
 	struct addrinfo *res = createAddressInfo(IP, port);
 	int sockfd = createSocket(res);
 	connectSocket(sockfd, res);
