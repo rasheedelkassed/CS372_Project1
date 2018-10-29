@@ -60,7 +60,7 @@ int main() {
 		printf("Second\n");
 		i++;
 	}
-	Sleep(1000);
+	sleep(1000);
 	close(sockfd);
 	freeaddrinfo(res);
 	
