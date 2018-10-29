@@ -49,7 +49,7 @@ public class ChatServer{
         }
     }
 	
-	private String getUserName(){
+	private void getUserName(){
 		System.out.print("Enter your username: ");
 		userName = messageToSend.nextLine();
 	}
