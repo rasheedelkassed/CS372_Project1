@@ -93,7 +93,7 @@ int main() {
 		}else if (status == 0){ 
 			printf("Connection closed by server\n");
 			break;
-		}else if(strcmp(output, "quit") == 0){
+		}else if(strcmp(output, "\\quit") == 0){
 			printf("Connection closed by server\n");
 		}else{
 			printf("%s", output);
