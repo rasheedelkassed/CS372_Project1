@@ -61,7 +61,7 @@ int main() {
 	char output[500];
 	char input[500];
 	char userName[10];
-	char toSend[510];
+	std::string toSend;
 	
 	memset(input,0,sizeof(input));
 	memset(output,0,sizeof(output));
@@ -78,12 +78,9 @@ int main() {
 		
 		fgets(input, 500, stdin);
 		
-		strncpy(toSend, userName, sizeof(userName)-1);
-		strncat(toSend, input, sizeof(input)-1);
-		printf("EXAMPLE: ");
-		printf(toSend);
+		toSend = userName + input;
 		
-		send(sockfd, toSend, sizeof(toSend), 0);
+		send(sockfd, toSend.c_str(), sizeof(toSend), 0);
 		
 		status = recv(sockfd, output, 500, 0);		
 		if (status == -1){
