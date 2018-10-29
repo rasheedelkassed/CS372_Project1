@@ -90,12 +90,12 @@ int main() {
 		if (status == -1){
 			fprintf(stderr, "Error when receiving data from host\n");
 			exit(1);
-		}
-		else if (status == 0){ 
+		}else if (status == 0){ 
 			printf("Connection closed by server\n");
 			break;
-		}
-		else{
+		}else if(strcmp(output, "\\quit\n") == 0){
+			printf("Connection closed by server\n");
+		}else{
 			printf("%s", output);
 		}
 		
