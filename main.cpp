@@ -53,8 +53,11 @@ int main() {
 	int sockfd = createSocket(res);
 	connectSocket(sockfd, res);
 	printf("We Reached While\n");
-	while(true){
+	while(int i < 10){
+		printf("First\n");
 		send(sockfd, "This might work\n", 1, 0);
+		printf("Second\n");
+		i++;
 	}
 	close(sockfd);
 	
