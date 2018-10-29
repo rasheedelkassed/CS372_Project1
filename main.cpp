@@ -61,6 +61,5 @@ int main() {
 		i++;
 	}
 	
-	freeaddrinfo(res);
 	return 0;
 }
