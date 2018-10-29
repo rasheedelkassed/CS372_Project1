@@ -75,9 +75,9 @@ int main() {
 	
 	int i = 0;
 	while(i < 5){
-		
-		printf("%s>", userName);
 		fgets(input, 500, stdin);
+		strcpy(toSend, userName);
+		strcat(toSend, input);
 		
 		send(sockfd, toSend, sizeof(toSend), 0);
 		
