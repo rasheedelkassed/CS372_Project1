@@ -81,7 +81,7 @@ public class ChatServer{
 					System.out.println(receivedData);
 				}
 				
-				sentData = userName + " " + messageToSend.nextLine();
+				sentData = userName + ">" + messageToSend.nextLine();
 				dataOut.println(sentData);
 
 

@@ -47,6 +47,10 @@ void connectSocket(int sockfd, struct addrinfo *res){
 	}
 }
 
+void getUserName(char[] userName){
+	fgets(userName, 10, stdin);
+}
+
 int main() {
 	struct addrinfo *res = createAddressInfo("flip2.engr.oregonstate.edu", "5423");
 	int sockfd = createSocket(res);
@@ -56,16 +60,23 @@ int main() {
 	int status;
 	char output[500];
 	char input[500];
+	char userName[10];
 	
 	memset(input,0,sizeof(input));
 	memset(output,0,sizeof(output));
+	memset(userName,0,sizeof(userName));
+	
+	printf("Enter your username: ");
+	getUserName(userName);
+	
+	
 	
 	int i = 0;
 	while(i < 5){
 		
 		fgets(input, 500, stdin);
 		
-		send(sockfd, input, sizeof(input), 0);
+		send(sockfd, userName + input, sizeof(input), 0);
 		
 		status = recv(sockfd, output, 500, 0);		
 		
