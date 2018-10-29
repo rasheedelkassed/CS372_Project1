@@ -54,6 +54,7 @@ public class ChatServer{
         waitForResponse();
         initializeVariables();
         while(true){
+			System.out.println("We've made it here!");
             try{
                 receivedData = dataIn.readLine();
                 if((receivedData) == "\\quit"){
