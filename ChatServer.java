@@ -11,6 +11,8 @@ public class ChatServer{
     private Scanner messageToSend;
     private BufferedReader dataIn;          //Data being received from the client
     private PrintWriter dataOut;            //Data to be sent to the client
+	
+	private String userName;
 
 
     private void startServer(int port){
@@ -46,12 +48,18 @@ public class ChatServer{
             return;
         }
     }
+	
+	private String getUserName(){
+		System.out.print("Enter your username: ");
+		userName = messageToSend.nextLine();
+	}
 
 	
     public ChatServer(int port) {
         startServer(port);
         waitForResponse();
         initializeVariables();
+		getUserName();
 		
 		String receivedData = "";
 		String sentData = "";
@@ -73,7 +81,7 @@ public class ChatServer{
 					System.out.println(receivedData);
 				}
 				
-				sentData = messageToSend.nextLine();
+				sentData = userName + " " + messageToSend.nextLine();
 				dataOut.println(sentData);
 
 
