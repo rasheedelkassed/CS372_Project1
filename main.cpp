@@ -78,8 +78,8 @@ int main() {
 		
 		fgets(input, 500, stdin);
 		
-		strncpy(toSend, userName, sizeof(userName));
-		strncat(toSend, input, sizeof(input)-2);
+		strncpy(toSend, userName, sizeof(userName)-1);
+		strncat(toSend, input, sizeof(input)-1);
 		printf("EXAMPLE: ");
 		printf(toSend);
 		
