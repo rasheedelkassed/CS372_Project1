@@ -71,7 +71,7 @@ int main() {
 			break;
 		}
 		else{ // the message was ok, print it
-			printf("%s> %s\n", servername, output);
+			printf("%s\n", output);
 		}
 		
 		
