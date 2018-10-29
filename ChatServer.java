@@ -80,8 +80,14 @@ public class ChatServer{
 				}else{
 					System.out.println(receivedData);
 				}
-				
-				sentData = userName + ">" + messageToSend.nextLine();
+				sentData = messageToSend.nextLine();
+				if(sentData == "\\quit"){
+					dataOut.close();
+                    dataIn.close();
+                    clientSocket.close();
+                    break;
+				}
+				sentData = userName + ">" + sentData;
 				dataOut.println(sentData);
 
 

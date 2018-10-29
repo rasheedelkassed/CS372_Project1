@@ -76,7 +76,6 @@ int main() {
 		fgets(input, 500, stdin);
 		
 		if(strcmp(input, "\\quit\n") == 0){
-			printf("Quitting...");
 			break;
 		}
 		
