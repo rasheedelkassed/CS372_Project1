@@ -56,7 +56,6 @@ public class ChatServer{
 		String receivedData = "";
 		String sentData = "";
         while(true){
-			System.out.println("We've made it here!");
             try{
                 receivedData = dataIn.readLine();
                 if(receivedData == "\\quit"){
